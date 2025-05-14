@@ -12,6 +12,8 @@ fetchBtn.addEventListener('click', () => {
     })
     .then(data => {
       // Completar: renderizar datos en el contenedor
+      const dataResults = [data.results];
+      
       // Pista: Usa `data.results` para iterar sobre los personajes obtenidos.
     })
     .catch(error => {
