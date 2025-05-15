@@ -11,10 +11,10 @@ fetchBtn.addEventListener('click', () => {
       return response.json();
     })
     .then(data => {
+  
       // Completar: renderizar datos en el contenedor
-      const dataResults = [data.results];
-      
-      // Pista: Usa `data.results` para iterar sobre los personajes obtenidos.
+      const dataResults = data.results;
+      renderCharacters(dataResults);
     })
     .catch(error => {
       console.error('Error:', error);
@@ -24,10 +24,6 @@ fetchBtn.addEventListener('click', () => {
 
 // Implementa las Solicitudes con Axios
 
-// 1. Instala Axios o inclúyelo mediante una CDN:
-//   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-// 2. Escribe una función que utilice Axios para obtener los datos y manejarlos de manera similar a `fetch`.
-
 const axiosBtn = document.getElementById('axios-btn');
 
 axiosBtn.addEventListener('click', () => {
@@ -35,7 +31,8 @@ axiosBtn.addEventListener('click', () => {
     .then(response => {
       const data = response.data;
       // Completar: renderizar datos en el contenedor
-      // Pista: Observa que Axios ya convierte la respuesta JSON, por lo que no necesitas usar `.json()`.
+      renderCharacters(data.results);
+      
     })
     .catch(error => {
       console.error('Error:', error);
@@ -43,9 +40,8 @@ axiosBtn.addEventListener('click', () => {
     });
 });
 
-// Ejemplo de función de renderizado:
-// Puedes adecuar este código
-function renderCharacters(characters) {
+// Función de renderizado:
+const renderCharacters = (characters) =>{
   dataContainer.innerHTML = '';
   characters.forEach(character => {
     const characterElement = document.createElement('div');
